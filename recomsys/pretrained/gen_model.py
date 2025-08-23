@@ -19,6 +19,7 @@ labels = []
 title = []
 getT = False
 
+#fetch scraped data from the database
 if getT:
     try:
         connection = psycopg2.connect(
@@ -179,7 +180,7 @@ def model_training():
 
     model.fit(X_train, y_train, epochs=20, validation_split=0.2)
     model.save(model_name)
-    print("model trained successfully !!!")
+    print("model trained successfully")
 
 
 def predict():
@@ -199,7 +200,7 @@ def predict():
     embedding2 = np.reshape(embedding2, (1, -1))
 
     if loaded_model is None:
-        return {"error": "Model is not trained yet."}
+        return {"error": "Model is not trained."}
 
     similarity = loaded_model.predict([embedding1, embedding2])[0][0]
     similarity = round(float(similarity), 2)

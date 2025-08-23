@@ -9,41 +9,18 @@ from itertools import chain
 from sentence_transformers import SentenceTransformer, util
 import numpy as np
 import tensorflow as tf
+import tensorflow_hub as hub
 import os
 import warnings
 import random
 
 warnings.filterwarnings('ignore')
 
-embed = None
+embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
 model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
 
 def get_embeddings(sentences):
     return embed(sentences)
-
-def newembed(df):
-    if type(df) != list:
-        g = df.tolist()
-    else:
-        g = df
-    final = []
-    weight_male = 1
-    weight_female = 0.5
-    weight_kid = 0.1
-    for senten in g:
-        g1 = senten.split(" ")[-1]
-        if "women" in g1:
-            weight1 = weight_female
-        elif "men" in g1:
-            weight1 = weight_male
-        elif "kid" in g1:
-            weight1 = weight_kid
-        else:
-            weight1 = 1.0
-        embedding1 = model.encode(senten, convert_to_tensor=True)
-        weighted_embedding1 = embedding1 * weight1
-        final.append(weighted_embedding1.detach().cpu().numpy())
-    return final
 
 def replace_gender(sentence):
     words = sentence.lower().split()
@@ -56,7 +33,7 @@ def replace_gender(sentence):
             words[i] = 'kid'
     return ' '.join(words)
 
-model_name = "recom3.h5"
+model_name = "pretrained/recom3.h5"
 
 def predict(query):
     global model_name
