@@ -1,0 +1,318 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/font-awesome.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/elegant-icons.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/jquery-ui.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/magnific-popup.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/slicknav.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="{%url 'fav'%}"><span class="icon_heart_alt"></span>
+                <div class="tip">{{favcnt}}</div>
+            </a></li>
+            <li><a href="{%url 'wish'%}"><span class="icon_bag_alt"></span>
+                <div class="tip">{{wishcnt}}</div>
+            </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="{%url 'Home'%}"><img src="{%static 'img/logo.png'%}" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <div class="header__right__auth">
+                {%if not user.is_authenticated%}
+                <a href="{%url 'login'%}">Login</a>
+                <a href="{%url 'register'%}">Register</a>
+                {%else%}
+                <a href="#">{{user.username}}</a>
+                <a href="{%url 'logout'%}">Logout</a>
+                {%endif%}
+            </div>
+            <style>
+                .header__right__auth a{
+                    font-size: 16px;
+                    font-weight: 900;
+                }
+            </style>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a href="{%url 'Home'%}"><img src="{%static 'img/logo.png'%}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="{%url 'Home'%}">Home</a></li>
+                            <li><a href="{% url 'shop' type='women' %}">Women’s</a></li>
+                          
+                            <li><a href="{%url 'shop' type='men'%}">Men’s</a></li>
+                            <li><a href="{%url 'shop' type='kid'%}">Kid's</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        <div class="header__right__auth">
+                            <div class="header__right__auth">
+                                {%if not user.is_authenticated%}
+                                <a href="{%url 'login'%}">Login</a>
+                                <a href="{%url 'register'%}">Register</a>
+                                {%else%}
+                                <a href="#">{{user.username}}</a>
+                                <a href="{%url 'logout'%}">Logout</a>
+                                {%endif%}
+                            </div>
+                            <style>
+                                .header__right__auth a{
+                                    font-size: 16px;
+                                    font-weight: 900;
+                                }
+                            </style>
+                        </div>
+                        <ul class="header__right__widget">
+                            <li><span class="icon_search search-switch"></span></li>
+                            <li><a href="{%url 'fav'%}"><span class="icon_heart_alt"></span>
+                                <div class="tip">{{favcnt}}</div>
+                            </a></li>
+                            <li><a href="{%url 'wish'%}"><span class="icon_bag_alt"></span>
+                                <div class="tip">{{wishcnt}}</div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="{%url 'Home'%}"><i class="fa fa-home"></i> Home</a>
+                        <span>Shopping cart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+    <script>
+        function delsendrq(key, id, user_id) {
+                xhr = new XMLHttpRequest();
+                var url = "{%url 'del'%}";
+               
+                xhr.onreadystatechange = function() {
+                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                    window.location.reload()
+                                    console.log("Reloaded");
+                                }
+                            };
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-type", "application/json");
+
+                var data = JSON.stringify({ "id": id, "user": user_id ,"l":key});
+                xhr.send(data);
+            }
+    </script>
+    <script>
+        function sendrq(key, id, user_id) {
+                                xhr = new XMLHttpRequest();
+                               
+                                var url = "{%url 'wish'%}";
+                                
+                                xhr.onreadystatechange = function() {
+                                    if (xhr.readyState === 4 && xhr.status === 200) {
+                                        window.location.reload()
+                                        console.log("Reloaded");
+                                    }
+                                };
+                                xhr.open("POST", url, true);
+                                xhr.setRequestHeader("Content-type", "application/json");
+    
+                                var data = JSON.stringify({ "id": id, "user": user_id });
+                                xhr.send(data);
+                            }
+    </script>
+    <!-- Shop Cart Section Begin -->
+    <section class="shop-cart spad">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="related__title">
+                    <h5>RELATED PRODUCTS</h5>
+                </div>
+            </div>
+            {%for i in itm%}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="{{i.img.url}}" style="background-size: contain;">
+                        <ul class="product__hover">
+                            <li><a href="{{i.img.url}}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li onclick="delsendrq(1,{{i.item_no}},{{user.id}})"><a href="#"><span class="fas fa-trash-alt"></span></a></li>
+                            <li onclick="sendrq(2,{{j.item_no}},{{user.id}});"><a href=""><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="{%url 'details' id=i.item_no %}">{{i.title}}</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ {{i.price}}</div>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+           
+        </div>
+    </section>
+    <!-- Shop Cart Section End -->
+
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="{%url 'Home'%}"><img src="{%static 'img/logo.png'%}" alt=""></a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        cilisis.</p>
+                        <div class="footer__payment">
+                            <a href="#"><img src="{%static 'img/payment/payment-1.png'%}" alt=""></a>
+                            <a href="#"><img src="{%static 'img/payment/payment-2.png'%}" alt=""></a>
+                            <a href="#"><img src="{%static 'img/payment/payment-3.png'%}" alt=""></a>
+                            <a href="#"><img src="{%static 'img/payment/payment-4.png'%}" alt=""></a>
+                            <a href="#"><img src="{%static 'img/payment/payment-5.png'%}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-5">
+                    <div class="footer__widget">
+                        <h6>Quick links</h6>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <div class="footer__widget">
+                        <h6>Account</h6>
+                        <ul>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Orders Tracking</a></li>
+                            <li><a href="#">wish</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8 col-sm-8">
+                    <div class="footer__newslatter">
+                        <h6>NEWSLETTER</h6>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <div class="footer__copyright__text">
+                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                    </div>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form" action="{% url 'search' %}" method = "POST">
+                {% csrf_token %} 
+                <input id="query" type="text" name="query" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="{%static 'js/jquery-3.3.1.min.js'%}"></script>
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'js/jquery.magnific-popup.min.js'%}"></script>
+    <script src="{%static 'js/jquery-ui.min.js'%}"></script>
+    <script src="{%static 'js/mixitup.min.js'%}"></script>
+    <script src="{%static 'js/jquery.countdown.min.js'%}"></script>
+    <script src="{%static 'js/jquery.slicknav.js'%}"></script>
+    <script src="{%static 'js/owl.carousel.min.js'%}"></script>
+    <script src="{%static 'js/jquery.nicescroll.min.js'%}"></script>
+    <script src="{%static 'js/main.js'%}"></script>
+</body>
+
+</html>

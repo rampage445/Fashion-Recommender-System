@@ -1,0 +1,7 @@
+django 
+psycopg2
+tensorflow
+torch
+sentence_transformers
+pandas
+tensorflow_hub
