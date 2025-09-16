@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 def _upload(instance,filename):
     return f'{instance.gender}/{instance.category}/{filename}'
@@ -27,9 +26,8 @@ class Wishlist(models.Model):
     user = models.ForeignKey(User,null=True,on_delete=models.SET_NULL)
     item = models.ForeignKey(Item,null=True, on_delete=models.SET_NULL)
     
-from django.contrib.postgres.fields import ArrayField
 class Recommend(models.Model):
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     search_no = models.IntegerField()
-    array = ArrayField(models.IntegerField())
+    array = models.JSONField() 
 

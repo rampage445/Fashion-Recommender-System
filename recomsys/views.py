@@ -33,17 +33,22 @@ def replace_gender(sentence):
             words[i] = 'kid'
     return ' '.join(words)
 
-model_name = "pretrained/recom3.h5"
-
+model_name = "recom4.h5"
+from tensorflow.keras.layers import Layer
+import keras
+@keras.saving.register_keras_serializable(package="CustomLayers")
+class AbsLayer(Layer):
+    def call(self, inputs):
+        return tf.abs(inputs)
 def predict(query):
     global model_name
     try:
         current_path = os.path.abspath(__file__)
         model_path = os.path.join(os.path.dirname(current_path), model_name)
-        loaded_model = tf.keras.models.load_model(model_path)
-    except Exception:
+        loaded_model = tf.keras.models.load_model(model_path, custom_objects={"AbsLayer": AbsLayer}, safe_mode=False)
+    except Exception as e :
+        print("error",e)
         loaded_model = None
-
     sentence2 = query.lower()
     gendered_query = replace_gender(sentence2)
     if "women" in gendered_query:
@@ -60,8 +65,12 @@ def predict(query):
         sentence1 = i.title.lower()
         embedding1 = get_embeddings([sentence1])[0].numpy()
         embedding2 = get_embeddings([sentence2])[0].numpy()
+        expected_dim = 384
+        embedding1 = embedding1[:expected_dim]
+        embedding2 = embedding2[:expected_dim]
         embedding1 = np.reshape(embedding1, (1, -1))
         embedding2 = np.reshape(embedding2, (1, -1))
+        print(embedding1.shape,embedding2.shape)
         if loaded_model is None:
             return [1, 2]
         similarity = loaded_model.predict([embedding1, embedding2])[0][0]
@@ -107,6 +116,7 @@ def search(request):
         wishcnt = Wishlist.objects.count()
     ok = Item.objects.all()
     prod_list = ok
+    final = []
     if request.method == "POST":
         query = request.POST.get("query", "")
         query = replace_gender(query)
