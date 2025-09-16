@@ -1,5 +1,7 @@
 # The model training, web scraping scripts are available in the assets folder 
 
+## The free template Ashion was used alongside Django backend. The backend simply queries the model with the search queries and based on that the model generates a list of items that are going to be recommended.
+
 # Model architecture
 ![Model Architecture](assets/model_arch.png)
 
