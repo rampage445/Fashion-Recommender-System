@@ -1,6 +1,6 @@
 # Screenshots
-![Dress Search](assets/dress search.png)
-![Dress Recommended](assets/dress recom.png)
+![Dress Search](assets/dress_search.png)
+![Dress Recommended](assets/dress_recom.png)
 
-![Shoe Search](assets/shoe search.png)
-![Shoe Recommended](assets/shoe recom.png)
+![Shoe Search](assets/shoe_search.png)
+![Shoe Recommended](assets/shoe_recom.png)
