@@ -1,7 +1,7 @@
 # The model training, web scraping scripts are available on the assets folder 
 
 # Model architecture
-
+![Model Architecture](assets/model_arch.png)
 
 # Screenshots
 ## The recommendation is done based on search results
