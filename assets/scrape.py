@@ -92,46 +92,6 @@ for i in range(min(len(mydivs),1000)):
         continue
 
 """
-final = []
-for i in mydivs:
-    gg = re.search("<a href=.(.*).><img",str(i))
-    ok = rq.get(gg.group(1))
-    #print(gg.group(1))
-    sop = BeautifulSoup(ok.content,"html.parser")
-    ggall = []
-    my =  sop.find_all("meta")
-    for j in my:
-        #print(str(j))
-        try:
-            arr = re.findall("^<meta content=.(.*). property=..*./>$",str(j))
-            if arr != []:
-                ggall.append(*arr)
-        except Exception:
-            pass
-        #print(len(ggall))
-    des = "OK"
-    tp = "EMI"
-    try:
-        io = re.findall("<td  class=.name.>(.*)</td><td class=.value.>(.*)</td>",ok.text)
-        des = ""
-        for i in io:
-            des += i[0]+":"+i[1]+";"
-        tp = re.search("<span itemprop=.name.>(.*)</span></a><meta itemprop=.position. content=.2.",ok.text).group(1)
-    except Exception:
-        pass
-    name = ggall[0]
-    link = ggall[5]
-    
-    brand = ggall[6]
-    ava = ggall[7]
-    price = ggall[9].split('.')[0]
-    sku = ggall[-1]
-    nop = [name,link,brand,ava,price,sku,des]
-    final.append([name,link,brand,ava,price,sku,des,prod_tp])
-#print(final[1])
-"""   
-print("here")
-"""
 try:
     connection = psycopg2.connect(user="postgres",
                                   password="1234",
