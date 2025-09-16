@@ -5,4 +5,4 @@
 ![Shoe Search](assets/shoe_search.png)
 ![Shoe Recommended](assets/shoe_recom.png)
 
-[![Watch the video](https://raw.githubusercontent.com/rampage445/Fashion-Recommender-System/main/assets/shoe_recom.png)](https://raw.githubusercontent.com/rampage445/Fashion-Recommender-System/main/assets/recommend.mkv)
+![Watch the video](https://raw.githubusercontent.com/rampage445/Fashion-Recommender-System/main/assets/recommend.mkv)
