@@ -1,5 +1,4 @@
 django 
-psycopg2
 tensorflow
 torch
 sentence_transformers
