@@ -1,4 +1,4 @@
-# The model training, web scraping scripts are available on the assets folder 
+# The model training, web scraping scripts are available in the assets folder 
 
 # Model architecture
 ![Model Architecture](assets/model_arch.png)
